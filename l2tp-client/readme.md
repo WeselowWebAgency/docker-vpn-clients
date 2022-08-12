@@ -11,7 +11,7 @@ find . -name '*' | xargs dos2unix
 ## Команда сборки
 
 ```
-docker build -f . -t aweselow/linux-l2tp-client
+docker build . -t aweselow/linux-l2tp-client:latest
 ```
 
 ## Команда запуска
