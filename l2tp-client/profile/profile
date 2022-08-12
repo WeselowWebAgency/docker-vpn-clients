@@ -1,0 +1,29 @@
+passwords
+login *           @password      *
+--
+options.xl2tpd
+lcp-echo-interval 60
+lcp-echo-failure 4
+refuse-eap
+require-chap
+noauth
+noipx
+defaultroute
+replacedefaultroute
+logfile /profile/l2tp.log
+nobsdcomp
+--
+xl2tpd.conf
+[global]
+access control = no
+auth file = /etc/ppp/chap-secrets
+
+[lac hola]
+lns = @server
+redial = yes
+redial timeout = 5
+autodial = yes
+require authentication = no
+pppoptfile = /etc/ppp/options.xl2tpd
+name = @login
+--

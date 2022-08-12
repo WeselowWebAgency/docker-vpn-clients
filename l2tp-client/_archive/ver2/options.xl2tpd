@@ -1,0 +1,9 @@
+lcp-echo-interval 60
+lcp-echo-failure 4
+refuse-eap
+require-chap
+noauth
+noipx
+defaultroute
+replacedefaultroute
+nobsdcomp

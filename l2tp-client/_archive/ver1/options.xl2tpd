@@ -1,0 +1,18 @@
+unit 0
+lcp-echo-interval 10
+lcp-echo-failure 2
+remotename l2tp
+ipparam hola
+mru 1460
+mtu 1460
+nodeflate
+nobsdcomp
+persist
+maxfail 0
+nopcomp
+noaccomp
+noauth
+#usepeerdns
+name 17601227
+defaultroute
+replacedefaultroute

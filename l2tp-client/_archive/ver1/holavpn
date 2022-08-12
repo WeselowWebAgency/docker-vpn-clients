@@ -1,0 +1,16 @@
+#!/bin/sh
+
+[ $6 = "hola" ] || exit 0
+
+export GATEWAY=172.17.0.1
+
+for i in $(grep "^nameserver" /etc/resolv.conf | awk '{print $2}') ; do
+        route add -host $i gw $GATEWAY
+done
+
+route del $5 dev $1
+
+route add -host $5 gw $GATEWAY
+
+echo $PPP_REMOTE >> /usr/src/1
+
