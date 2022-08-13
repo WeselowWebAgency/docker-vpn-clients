@@ -14,6 +14,11 @@ find . -name '*' | xargs dos2unix
 docker build . -t aweselow/linux-l2tp-client:latest
 ```
 
+Отправить в репозиторий: 
+```
+docker push aweselow/linux-l2tp-client:latest
+```
+
 ## Команда запуска
 ```
 docker run -d --rm \
