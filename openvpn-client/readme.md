@@ -10,11 +10,7 @@ find . -name '*' | xargs dos2unix
 ## Команда сборки
 
 ```
-docker build . -t aweselow/linux-openvpn-client:latest
-```
-
-Отправить в репозиторий: 
-```
+docker build . -t aweselow/linux-openvpn-client:latest &&\
 docker push aweselow/linux-openvpn-client:latest
 ```
 
