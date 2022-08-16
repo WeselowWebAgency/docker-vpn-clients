@@ -10,7 +10,7 @@ noauth
 noipx
 defaultroute
 replacedefaultroute
-logfile /profile/l2tp.log
+logfile /profile/log.log
 nobsdcomp
 --
 xl2tpd.conf
