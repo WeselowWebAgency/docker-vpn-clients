@@ -1,8 +1,10 @@
 #!/bin/bash
 
 #check 3proxy is running
-if [ -z "$(ps -ela | grep 3proxy | grep -v defunct)" ]; then /etc/init.d/3proxy restart; fi
-#/etc/init.d/3proxy restart
+if [[ -z "$(ps -ela | grep 3proxy | grep -v defunct)" ]] && [[ -f "/etc/3proxy/3proxy.cfg" ]] 
+then 
+     /etc/init.d/3proxy restart
+fi
 
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
