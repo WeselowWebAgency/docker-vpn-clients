@@ -1,5 +1,5 @@
 passwords
-login *           @password      *
+@login *           @password      *
 --
 options.xl2tpd
 lcp-echo-interval 60
@@ -10,7 +10,7 @@ noauth
 noipx
 defaultroute
 replacedefaultroute
-logfile /profile/log.log
+logfile /profile/sys.log
 nobsdcomp
 --
 xl2tpd.conf

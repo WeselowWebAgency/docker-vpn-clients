@@ -33,7 +33,11 @@ sed -i "s:sysctl -q net.ipv4.conf.all.src_valid_mark=1:echo Skipping setting net
 
 ## Команда запуска
 
-`ConfigFilename` - это имя файла с конфигом в папке `/profile/` контейнера
+`ConfigFilename` - это имя файла с конфигом в папке `/profile/` контейнера.
+
+`/path/3proxy.cfg` - путь к конфигу 3proxy.
+
+`/path/profileDir` - путь к папке с файлами профиля.
 
 ```
 docker run -d --rm \
