@@ -28,7 +28,7 @@ COPY start.sh .
 RUN /tmp-proxy/3proxy-post-install.sh &&\
 	rm -R /tmp-proxy &&\
 	apt-get -qq update &&\
-	apt-get -qq install -y wireguard iproute2 curl iputils-ping dnsutils traceroute syslog-ng dos2unix procps &&\
+	apt-get -qq install -y wireguard openresolv iproute2 curl iputils-ping dnsutils traceroute syslog-ng dos2unix procps &&\
 	apt-get autoremove -y && apt-get clean &&\ 
 	dos2unix -k start.sh &&\
 	chmod +x start.sh

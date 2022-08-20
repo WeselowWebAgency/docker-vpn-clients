@@ -6,7 +6,8 @@ then
      /etc/init.d/3proxy restart
 fi
 
-echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo "nameserver 1.1.1.1" >> /etc/resolv.conf
 
 # Create config
 if ! [[ -f "/profile/$ConfigFilename" ]] 

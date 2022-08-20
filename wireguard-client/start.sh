@@ -6,7 +6,8 @@ then
      /etc/init.d/3proxy start
 fi
 
-echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo "nameserver 1.1.1.1" >> /etc/resolv.conf
 
 # Create config
 #CONFIGPATH=$(find /profile -name '*.ovpn' -print -type f)
@@ -19,7 +20,7 @@ fi
 echo "Found config file: /profile/$ConfigFilename" >> /profile/sys.log
 
 cp /profile/$ConfigFilename /etc/wireguard/wg0.conf
-echo "Copying config file: $CONFIGPATH to /etc/wireguard/wg0.conf" >> /profile/sys.log
+echo "Copying config file: $ConfigFilename to /etc/wireguard/wg0.conf" >> /profile/sys.log
 
 
 # Check for net.ipv4.conf.all.src_valid_mark=1
@@ -30,6 +31,8 @@ fi
 
 # The net.ipv4.conf.all.src_valid_mark sysctl is set when running the Docker container, so don't have WireGuard also set it
 sed -i "s:sysctl -q net.ipv4.conf.all.src_valid_mark=1:echo Skipping setting net.ipv4.conf.all.src_valid_mark:" /usr/bin/wg-quick
+
+echo "Starting Wireguard Client ..." >> /profile/sys.log
 wg-quick up wg0
 
 tail -f 
