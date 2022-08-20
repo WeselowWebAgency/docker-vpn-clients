@@ -14,9 +14,26 @@ docker build . -t aweselow/linux-wireguard-client:latest &&\
 docker push aweselow/linux-wireguard-client:latest
 ```
 
+## Ремарки
+
+Для запуска Wireguad в контейнере надо:
+
+1. Добавить пакет `openresolv`
+
+2. При запуске добавлять переменную `--sysctl net.ipv4.conf.all.src_valid_mark=1`. Внутри контейнера добавить не получится, так как не хватит прав или надо использовать режим `--priviledged`.
+
+3. Внутри контейнера отредактировать `/usr/bin/wg-quick`, чтобы он не пытался установить `--sysctl net.ipv4.conf.all.src_valid_mark=1`:
+
+```
+# The net.ipv4.conf.all.src_valid_mark sysctl is set when running the Docker container, so don't have WireGuard also set it
+sed -i "s:sysctl -q net.ipv4.conf.all.src_valid_mark=1:echo Skipping setting net.ipv4.conf.all.src_valid_mark:" /usr/bin/wg-quick
+
+```
+
+
 ## Команда запуска
 
-```ConfigFilename``` - это имя файла с конфигом в папке контейнера, например, ```/profile/config.conf```
+`ConfigFilename` - это имя файла с конфигом в папке контейнера, например, ```/profile/config.conf```
 
 
 ```
