@@ -25,16 +25,15 @@ docker push aweselow/linux-wireguard-client:latest
 3. Внутри контейнера отредактировать `/usr/bin/wg-quick`, чтобы он не пытался установить `--sysctl net.ipv4.conf.all.src_valid_mark=1`:
 
 ```
-# The net.ipv4.conf.all.src_valid_mark sysctl is set when running the Docker container, so don't have WireGuard also set it
+# The net.ipv4.conf.all.src_valid_mark sysctl is set when running the Docker container, 
+# so don't have WireGuard also set it
 sed -i "s:sysctl -q net.ipv4.conf.all.src_valid_mark=1:echo Skipping setting net.ipv4.conf.all.src_valid_mark:" /usr/bin/wg-quick
-
 ```
 
 
 ## Команда запуска
 
-`ConfigFilename` - это имя файла с конфигом в папке контейнера, например, ```/profile/config.conf```
-
+`ConfigFilename` - это имя файла с конфигом в папке `/profile/` контейнера
 
 ```
 docker run -d --rm \
