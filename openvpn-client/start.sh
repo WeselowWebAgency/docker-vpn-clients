@@ -6,12 +6,19 @@ then
      /etc/init.d/3proxy restart
 fi
 
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
-CONFIGPATH=$(find /profile -name '*.ovpn' -print -type f)
-echo Found config file: $CONFIGPATH > /profile/sys.log
+# Create config
+if ! [[ -f "/profile/$ConfigFilename" ]] 
+then 
+     echo "Cannot find config file: /profile/$ConfigFilename " >> /profile/sys.log
+     exit 1
+fi
 
-openvpn --config $CONFIGPATH \
+echo "Found config file: /profile/$ConfigFilename" >> /profile/sys.log
+
+openvpn --config /profile/$ConfigFilename \
         --connect-retry 5 15 \
 	--connect-retry-max 3
+	
 tail -f 

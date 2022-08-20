@@ -15,6 +15,9 @@ docker push aweselow/linux-openvpn-client:latest
 ```
 
 ## Команда запуска
+
+```ConfigFilename``` - это имя файла с конфигом в папке контейнера, например, ```/profile/config.conf```
+
 ```
 docker run -d --rm \
     --name=openvpn \
@@ -23,7 +26,8 @@ docker run -d --rm \
 	-p 9002:9001 \
 	--cap-add=SYS_MODULE  \
 	--cap-add=net_admin \
-	--device /dev/net/tun  \	 
+	--device /dev/net/tun  \
+	-e ConfigFilename=config.conf \
 	-v /path/3proxy.cfg:/etc/3proxy/3proxy.cfg \
 	-v /path/profileDir:/profile/ \
 	aweselow/linux-openvpn-client

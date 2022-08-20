@@ -2,6 +2,7 @@
 
 echo == Converting files ...
 find . -name '*' | xargs dos2unix
+find . -name '*.sh' | xargs chmod +x  
 echo == Converting files ... done!
 echo
 

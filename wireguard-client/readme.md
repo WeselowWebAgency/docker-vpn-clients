@@ -15,6 +15,10 @@ docker push aweselow/linux-wireguard-client:latest
 ```
 
 ## Команда запуска
+
+```ConfigFilename``` - это имя файла с конфигом в папке контейнера, например, ```/profile/config.conf```
+
+
 ```
 docker run -d --rm \
     --name=wireguard \
@@ -26,6 +30,7 @@ docker run -d --rm \
 	--device /dev/net/tun  \
 	--sysctl net.ipv4.conf.all.src_valid_mark=1 \
 	--sysctl net.ipv4.ip_forward=1 \
+	-e ConfigFilename=config.conf \
 	-v /path/3proxy.cfg:/etc/3proxy/3proxy.cfg \
 	-v /path/profileDir:/profile/ \
 	aweselow/linux-wireguard-client
